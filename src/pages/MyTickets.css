@@ -28,6 +28,7 @@
 }
 
 .ticket-info h3 {
+  color: var(--color-muted);
   margin: 0 0 var(--space-2) 0;
 }
 
