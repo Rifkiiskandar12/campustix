@@ -1,0 +1,31 @@
+.profile-layout {
+  max-width: 600px;
+}
+
+.profile-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  padding: var(--space-6);
+  background-color: var(--color-paper-2);
+  border-radius: var(--radius-card);
+  margin-top: var(--space-6);
+}
+
+.profile-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-name {
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin: 0 0 var(--space-1) 0;
+}
+
+.profile-email {
+  color: var(--color-muted);
+  margin: 0;
+}

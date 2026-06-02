@@ -1,0 +1,43 @@
+.toast-container {
+  position: fixed;
+  bottom: var(--space-6);
+  right: var(--space-6);
+  z-index: 1000;
+  animation: slideUp var(--transition-fast);
+}
+
+.toast-content {
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-card);
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.toast-content.error {
+  /* Using a dark slightly red-tinted ink for errors to keep it minimal */
+  background-color: oklch(30% 0.05 20); 
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toast-container {
+    animation: fadeIn 150ms ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
