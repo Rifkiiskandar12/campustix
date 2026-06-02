@@ -1,0 +1,54 @@
+.admin-dash-layout {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.admin-dash-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-6);
+}
+
+.admin-dash-header h2 {
+  margin: 0;
+}
+
+.table-container {
+  background-color: var(--color-paper-2);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-rule);
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.admin-table th, .admin-table td {
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.admin-table th {
+  background-color: var(--color-paper-3);
+  font-weight: 700;
+  color: var(--color-ink-2);
+}
+
+.action-buttons {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.pill-danger {
+  background-color: transparent;
+  color: oklch(50% 0.2 25); /* Merah minimalis */
+  border: 1px solid oklch(50% 0.2 25);
+}
+
+.pill-danger:hover {
+  background-color: oklch(95% 0.05 25);
+}

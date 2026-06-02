@@ -10,6 +10,9 @@ import { Profile } from './pages/Profile';
 import { Toast } from './components/Toast';
 import { Login } from './pages/login';
 import { AdminAddEvent } from './pages/AdminAddEvent';
+import { Support } from './pages/Support';
+import { AdminDashboard } from './pages/AdminDashboard';
+import { AdminEditEvent } from './pages/AdminEditEvent';
 
 export default function App() {
   const [user, setUser] = useState<User | null>(null);
@@ -25,9 +28,12 @@ export default function App() {
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
     });
-
     return () => subscription.unsubscribe();
   }, []);
+
+  
+    const adminEmails = ['jaaaa7126@gmail.com'];
+    const isAdmin = user && adminEmails.includes(user?.email);
 
   return (
     <>
@@ -49,9 +55,18 @@ export default function App() {
             element={user ? <Profile user={user} /> : <Navigate to="/" replace />} 
           />
           <Route 
-            path="/admin/add-event" 
-            element={user ? <AdminAddEvent user={user} /> : <Navigate to="/login" replace />} 
+            path="/admin" 
+            element={isAdmin ? <AdminDashboard /> : <Navigate to="/" replace />} 
           />
+          <Route 
+            path="/admin/add-event" 
+            element={isAdmin ? <AdminAddEvent user={user} /> : <Navigate to="/" replace />} 
+          />
+          <Route 
+            path="/admin/edit-event/:id" 
+            element={isAdmin ? <AdminEditEvent /> : <Navigate to="/" replace />} 
+          />
+          <Route path="/support" element={<Support />} />
         </Routes>
       </main>
 

@@ -6,7 +6,7 @@
   padding: var(--space-4) clamp(var(--space-4), 4vw, var(--space-10));
   position: sticky;
   top: 0;
-  background-color: oklch(98% 0.012 92 / 88%);
+  background-color: oklch(16% 0.045 112 / 88%);
   backdrop-filter: blur(12px);
   z-index: 100;
   border-bottom: var(--rule-thin);
@@ -16,20 +16,22 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  font-weight: 800;
+  font-family: var(--font-display);
+  font-weight: 900;
   font-size: clamp(1.1rem, 2vw, 1.45rem);
   text-decoration: none;
-  color: var(--color-ink);
+  color: var(--color-accent);
   letter-spacing: 0;
+  text-transform: uppercase;
 }
 
 .wordmark::before {
   content: '';
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  border-radius: 0;
   background-color: var(--color-accent);
-  box-shadow: 12px 0 0 var(--color-accent-2);
+  box-shadow: 14px 0 0 var(--color-ink);
 }
 
 .nav-center {
@@ -49,15 +51,17 @@
   border-radius: var(--radius-pill);
   text-decoration: none;
   color: var(--color-ink-2);
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: var(--text-sm);
+  text-transform: uppercase;
   white-space: nowrap;
   transition: color var(--transition-fast), background-color var(--transition-fast);
 }
 
 .nav-center a:hover {
   color: var(--color-ink);
-  background-color: var(--color-paper-2);
+  background-color: var(--color-paper-3);
 }
 
 .nav-center .nav-action-link {
@@ -78,9 +82,11 @@
   padding: var(--space-2) var(--space-4);
   border: var(--rule-thin);
   border-radius: var(--radius-pill);
-  background-color: var(--color-surface);
+  background-color: var(--color-paper-2);
   text-decoration: none;
   font-weight: 700;
+  font-family: var(--font-display);
+  text-transform: uppercase;
   color: var(--color-ink);
   transition: transform var(--transition-fast), border-color var(--transition-fast);
 }
@@ -117,7 +123,7 @@
   .wordmark::before {
     width: 10px;
     height: 10px;
-    box-shadow: 10px 0 0 var(--color-accent-2);
+    box-shadow: 10px 0 0 var(--color-ink);
   }
 
   .nav-center a {

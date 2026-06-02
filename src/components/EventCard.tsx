@@ -15,7 +15,9 @@ export const EventCard = ({ event }: { event: Event }) => {
         <h3>{event.title}</h3>
         <p className="venue">{event.venue}</p>
         <div className="card-footer">
-          <span className="price">${event.price}</span>
+          <span className="price">
+            {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(event.price)}
+          </span>
           <span className="pill-btn pill-secondary btn-sm">Get Ticket</span>
         </div>
       </div>

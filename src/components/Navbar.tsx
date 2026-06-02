@@ -1,9 +1,13 @@
 import { Link } from 'react-router-dom';
 import type { User } from '@supabase/supabase-js';
-import { CalendarPlus, Ticket, UserCircle } from 'lucide-react';
+import { ShieldCheck, Ticket, UserCircle } from 'lucide-react';
 import './Navbar.css';
 
 export const Navbar = ({ user }: { user: User | null }) => {
+  // Ganti dengan email Anda, misal: rifki@kampus.edu atau email pribadi
+  const adminEmails = ['jaaaa7126@gmail.com'];
+  const isAdmin = Boolean(user?.email && adminEmails.includes(user.email));
+
   return (
     <nav className="navbar">
       <div className="nav-left">
@@ -12,10 +16,12 @@ export const Navbar = ({ user }: { user: User | null }) => {
       <div className="nav-center">
         <Link to="/">Home</Link>
         {user && <Link to="/tickets">Tickets</Link>}
-        {user && (
-          <Link to="/admin/add-event" className="nav-action-link">
-            <CalendarPlus size={16} aria-hidden="true" />
-            Buat Event
+        
+        {/* Tombol ini sekarang HANYA muncul jika isAdmin bernilai true */}
+        {isAdmin && (
+          <Link to="/admin" className="nav-action-link">
+            <ShieldCheck size={16} aria-hidden="true" />
+            Admin Panel
           </Link>
         )}
       </div>

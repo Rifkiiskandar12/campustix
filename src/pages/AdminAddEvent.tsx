@@ -132,7 +132,7 @@ export const AdminAddEvent = ({ user }: { user: User | null }) => {
 
         <div className="form-row">
           <div className="form-group">
-            <label>Harga Tiket ($)</label>
+            <label>Harga Tiket (Rp)</label>
             <input className="field-control" type="number" name="price" min="0" required value={formData.price} onChange={handleChange} />
           </div>
           <div className="form-group">

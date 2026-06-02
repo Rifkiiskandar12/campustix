@@ -1,0 +1,58 @@
+.support-layout {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.mb-6 {
+  margin-bottom: var(--space-6);
+}
+
+.support-subtitle {
+  color: var(--color-muted);
+  margin: 0 0 var(--space-8) 0;
+}
+
+.faq-section {
+  margin-bottom: var(--space-8);
+}
+
+.faq-section h3 {
+  font-size: 1.2rem;
+  border-bottom: 1px solid var(--color-rule);
+  padding-bottom: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.faq-item {
+  margin-bottom: var(--space-5);
+}
+
+.faq-item h4 {
+  margin: 0 0 var(--space-2) 0;
+  color: var(--color-ink);
+}
+
+.faq-item p {
+  margin: 0;
+  color: var(--color-ink-2);
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.contact-section {
+  background-color: var(--color-paper-2);
+  padding: var(--space-6);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-rule);
+  text-align: center;
+}
+
+.contact-section h3 {
+  margin: 0 0 var(--space-2) 0;
+}
+
+.contact-section p {
+  color: var(--color-muted);
+  margin: 0 0 var(--space-4) 0;
+  font-size: 0.95rem;
+}

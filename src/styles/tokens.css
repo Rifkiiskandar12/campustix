@@ -1,23 +1,25 @@
-/* Hallmark · macrostructure: Workbench · tone: editorial utility · anchor hue: teal */
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap');
+/* Hallmark · genre: sport-commerce utility · macrostructure: Catalogue Workbench · design-system: design.md · designed-as-app */
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700;800&family=Barlow+Condensed:wght@700;800;900&family=JetBrains+Mono:wght@500;700&display=swap');
 
 :root {
-  --color-paper: oklch(98% 0.012 92);
-  --color-paper-2: oklch(95% 0.016 92);
-  --color-paper-3: oklch(91% 0.018 92);
-  --color-surface: oklch(99% 0.006 92);
-  --color-ink: oklch(18% 0.018 238);
-  --color-ink-2: oklch(35% 0.022 238);
-  --color-muted: oklch(56% 0.022 238);
-  --color-rule: oklch(84% 0.02 92);
-  --color-accent: oklch(58% 0.14 182);
-  --color-accent-2: oklch(68% 0.16 58);
-  --color-accent-soft: oklch(91% 0.046 182);
-  --color-danger: oklch(48% 0.15 24);
-  --color-danger-soft: oklch(92% 0.04 24);
-  --color-success: oklch(52% 0.12 148);
-  --color-focus: oklch(54% 0.15 182);
-  --color-shadow: oklch(18% 0.018 238 / 14%);
+  --color-paper: oklch(16% 0.045 112);
+  --color-paper-2: oklch(20% 0.055 112);
+  --color-paper-3: oklch(26% 0.06 112);
+  --color-surface: oklch(98% 0.01 98);
+  --color-surface-2: oklch(92% 0.018 98);
+  --color-ink: oklch(96% 0.012 98);
+  --color-ink-2: oklch(78% 0.025 98);
+  --color-muted: oklch(64% 0.035 98);
+  --color-rule: oklch(36% 0.055 112);
+  --color-accent: oklch(91% 0.27 118);
+  --color-accent-2: oklch(84% 0.18 72);
+  --color-accent-soft: oklch(28% 0.08 116);
+  --color-accent-ink: oklch(16% 0.045 112);
+  --color-danger: oklch(62% 0.18 28);
+  --color-danger-soft: oklch(28% 0.07 28);
+  --color-success: oklch(78% 0.18 148);
+  --color-focus: oklch(91% 0.27 118);
+  --color-shadow: oklch(5% 0.02 112 / 36%);
 
   --space-1: 4px;
   --space-2: 8px;
@@ -31,19 +33,20 @@
   --space-16: 64px;
   --space-20: 80px;
 
-  --font-sans: 'Geist', system-ui, sans-serif;
+  --font-display: 'Barlow Condensed', system-ui, sans-serif;
+  --font-sans: 'Barlow', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   --text-xs: 0.78rem;
   --text-sm: 0.9rem;
   --text-base: 1rem;
   --text-lg: 1.125rem;
-  --text-xl: 1.35rem;
-  --text-2xl: clamp(1.65rem, 3vw, 2.25rem);
-  --text-display: clamp(3rem, 8vw, 5.75rem);
+  --text-xl: 1.45rem;
+  --text-2xl: clamp(1.85rem, 3.5vw, 2.85rem);
+  --text-display: clamp(3.6rem, 11vw, 8.5rem);
 
-  --radius-card: 8px;
-  --radius-control: 6px;
-  --radius-pill: 999px;
+  --radius-card: 0px;
+  --radius-control: 0px;
+  --radius-pill: 0px;
   --rule-thin: 1px solid var(--color-rule);
   --shadow-card: 0 18px 40px var(--color-shadow);
 
@@ -69,7 +72,7 @@ body {
 body {
   min-height: 100vh;
   background:
-    linear-gradient(180deg, var(--color-paper), var(--color-paper-2));
+    linear-gradient(180deg, var(--color-paper), var(--color-paper-2) 46%, var(--color-paper));
   color: var(--color-ink);
   font-family: var(--font-sans);
   margin: 0;
@@ -86,7 +89,7 @@ body::before {
     linear-gradient(90deg, var(--color-rule) 1px, transparent 1px);
   background-size: 48px 48px;
   mask-image: linear-gradient(180deg, black, transparent 58%);
-  opacity: 0.24;
+  opacity: 0.16;
 }
 
 a {
@@ -115,13 +118,16 @@ select {
   min-height: 42px;
   padding: var(--space-2) var(--space-5);
   border-radius: var(--radius-pill);
-  font-weight: 700;
+  border: var(--rule-thin);
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: 0;
   line-height: 1;
+  text-transform: uppercase;
   white-space: nowrap;
   cursor: pointer;
-  transition: transform var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
-  border: var(--rule-thin);
   text-decoration: none;
+  transition: transform var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
 }
 
 .pill-btn:hover {
@@ -153,26 +159,39 @@ button:focus-visible {
 }
 
 .pill-primary {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-accent-ink);
+}
+
+.pill-primary:hover {
   background-color: var(--color-ink);
   border-color: var(--color-ink);
   color: var(--color-paper);
 }
 
-.pill-primary:hover {
-  background-color: var(--color-accent);
-  border-color: var(--color-accent);
-  color: var(--color-ink);
-}
-
 .pill-secondary {
-  background-color: var(--color-surface);
+  background-color: var(--color-paper-2);
   border-color: var(--color-rule);
   color: var(--color-ink);
 }
 
 .pill-secondary:hover {
-  border-color: var(--color-ink-2);
-  background-color: var(--color-paper);
+  border-color: var(--color-accent);
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent);
+}
+
+.pill-danger {
+  background-color: var(--color-danger-soft);
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+}
+
+.pill-danger:hover {
+  background-color: var(--color-danger);
+  border-color: var(--color-danger);
+  color: var(--color-paper);
 }
 
 .page-enter-active {
@@ -183,8 +202,11 @@ button:focus-visible {
 
 .page-title {
   margin: 0;
+  font-family: var(--font-display);
   font-size: var(--text-2xl);
-  line-height: 1.05;
+  font-weight: 900;
+  line-height: 0.95;
+  text-transform: uppercase;
   overflow-wrap: anywhere;
 }
 
@@ -197,7 +219,7 @@ button:focus-visible {
   width: 100%;
   border: var(--rule-thin);
   border-radius: var(--radius-control);
-  background-color: var(--color-surface);
+  background-color: var(--color-paper-2);
   color: var(--color-ink);
   padding: var(--space-3) var(--space-4);
   transition: border-color var(--transition-fast), background-color var(--transition-fast);
@@ -205,7 +227,18 @@ button:focus-visible {
 
 .field-control:focus {
   border-color: var(--color-focus);
+  background-color: var(--color-paper);
   outline: none;
+}
+
+.field-control::placeholder {
+  color: var(--color-muted);
+}
+
+.surface-board {
+  border: var(--rule-thin);
+  background-color: var(--color-paper-2);
+  box-shadow: var(--shadow-card);
 }
 
 .full-width {

@@ -85,7 +85,9 @@ export const EventDetail = ({ user }: { user: User | null }) => {
 
           <div className="summary">
             <span>Total</span>
-            <span className="price">${event.price * qty}</span>
+            <span className="price">
+              {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(event.price * qty)}
+            </span>
           </div>
 
           <button className="pill-btn pill-primary full-width" onClick={handleBook}>

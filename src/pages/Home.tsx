@@ -26,9 +26,9 @@ export const Home = () => {
     <div className="page-enter-active home-layout">
       <header className="hero">
         <div className="hero-copy">
-          <p className="hero-kicker">CampusTix live board</p>
-          <h1>Campus Beat</h1>
-          <p className="page-subtitle">Temukan konser, seminar, pertandingan, dan acara seni kampus dalam satu katalog yang mudah dipindai.</p>
+          <p className="hero-kicker">Live campus drop</p>
+          <h1>Ticket Board</h1>
+          <p className="page-subtitle">Katalog event kampus yang cepat dipindai: konser, seminar, pertandingan, dan acara seni dalam satu board.</p>
         </div>
         <div className="filters">
           <input 
