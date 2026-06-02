@@ -1,12 +1,7 @@
 import { Link } from 'react-router-dom';
-import { supabase } from '../lib/supabase';
-import './Navbar.css'; // Assume standard CSS flexbox layout
+import './Navbar.css';
 
 export const Navbar = ({ user }: { user: any }) => {
-  const handleLogin = async () => {
-    await supabase.auth.signInWithOAuth({ provider: 'google' });
-  };
-
   return (
     <nav className="navbar">
       <div className="nav-left">
@@ -20,9 +15,10 @@ export const Navbar = ({ user }: { user: any }) => {
         {user ? (
           <Link to="/profile" className="avatar-link">Profile</Link>
         ) : (
-          <button className="pill-btn pill-primary" onClick={handleLogin}>
+          // Ubah bagian ini menjadi Link yang mengarah ke /login
+          <Link to="/login" className="pill-btn pill-primary" style={{ textDecoration: 'none' }}>
             Sign In
-          </button>
+          </Link>
         )}
       </div>
     </nav>

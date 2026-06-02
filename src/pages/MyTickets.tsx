@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { supabase, Booking } from '../lib/supabase';
+import { supabase, type Booking } from '../lib/supabase';
 import './MyTickets.css';
 
 export const MyTickets = ({ user }: { user: any }) => {

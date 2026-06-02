@@ -1,0 +1,73 @@
+.event-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-paper-2);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--color-ink);
+  border: 1px solid var(--color-rule);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.event-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.05);
+}
+
+.card-image-wrapper {
+  position: relative;
+  aspect-ratio: 16/9;
+}
+
+.card-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.date-badge {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  background: var(--color-paper);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.card-content {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-content h3 {
+  margin: 0 0 var(--space-1) 0;
+  font-size: 1.2rem;
+}
+
+.venue {
+  color: var(--color-muted);
+  margin: 0 0 var(--space-4) 0;
+  font-size: 0.9rem;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.price {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.btn-sm {
+  padding: var(--space-1) var(--space-4);
+  font-size: 0.9rem;
+}

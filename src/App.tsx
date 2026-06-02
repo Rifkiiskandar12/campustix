@@ -7,6 +7,7 @@ import { EventDetail } from './pages/EventDetail';
 import { MyTickets } from './pages/MyTickets';
 import { Profile } from './pages/Profile';
 import { Toast } from './components/Toast';
+import { Login } from './pages/Login';
 
 export default function App() {
   const [user, setUser] = useState<any>(null);
@@ -33,6 +34,9 @@ export default function App() {
       <main style={{ padding: 'var(--space-8) var(--space-4)', maxWidth: '1200px', margin: '0 auto' }}>
         <Routes>
           <Route path="/" element={<Home />} />
+          {/* Taruh di bawah Route Home */}
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login user={user} />} />
           <Route path="/event/:id" element={<EventDetail user={user} />} />
           
           {/* Auth-gated routes */}

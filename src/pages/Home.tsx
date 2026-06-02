@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { supabase, Event } from '../lib/supabase';
+import { supabase, type Event } from '../lib/supabase';
 import { EventCard } from '../components/EventCard';
 import './Home.css';
 

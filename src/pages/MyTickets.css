@@ -1,0 +1,44 @@
+.workbench-layout {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.ticket-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.ticket-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-5);
+  background-color: var(--color-paper-2);
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-card);
+}
+
+.ticket-info h3 {
+  margin: 0 0 var(--space-2) 0;
+}
+
+.ticket-meta {
+  color: var(--color-muted);
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.ticket-code {
+  background-color: var(--color-paper-3);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-card);
+}
+
+.mono-code {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--color-ink);
+}

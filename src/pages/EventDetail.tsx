@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { supabase, Event } from '../lib/supabase';
+import { supabase, type Event } from '../lib/supabase';
 import './EventDetail.css';
 
 export const EventDetail = ({ user }: { user: any }) => {

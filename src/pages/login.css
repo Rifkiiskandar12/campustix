@@ -1,0 +1,38 @@
+.login-layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+
+.login-card {
+  background-color: var(--color-paper-2);
+  padding: var(--space-8) var(--space-6);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-rule);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+}
+
+.login-card h2 {
+  margin: 0 0 var(--space-2) 0;
+  font-size: 1.75rem;
+}
+
+.login-desc {
+  color: var(--color-muted);
+  margin: 0 0 var(--space-8) 0;
+}
+
+.auth-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* Memastikan tombol full width jika dipakai di dalam komponen ini */
+.full-width {
+  width: 100%;
+}
