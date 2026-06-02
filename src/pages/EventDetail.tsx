@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import type { User } from '@supabase/supabase-js';
 import { supabase, type Event } from '../lib/supabase';
 import './EventDetail.css';
 
-export const EventDetail = ({ user }: { user: any }) => {
+export const EventDetail = ({ user }: { user: User | null }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [event, setEvent] = useState<Event | null>(null);
@@ -61,8 +62,9 @@ export const EventDetail = ({ user }: { user: any }) => {
       alert("Pesanan berhasil dibuat! Menunggu verifikasi admin.");
       navigate('/tickets');
       
-    } catch (err: any) {
-      alert("Error: " + err.message);
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : 'Unknown error';
+      alert("Error: " + message);
     } finally {
       setLoading(false);
     }
@@ -70,20 +72,46 @@ export const EventDetail = ({ user }: { user: any }) => {
 
   if (!event) return null;
 
+  const eventDate = new Intl.DateTimeFormat('id-ID', {
+    weekday: 'short',
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  }).format(new Date(event.date));
+  const total = event.price * qty;
+  const remaining = Math.max(event.capacity - event.soldCount, 0);
+
   return (
     <div className="page-enter-active split-studio">
       <div className="panel-left">
-        <img src={event.imageUrl} alt={event.title} className="detail-hero-img" />
+        <figure className="poster-frame">
+          <img src={event.imageUrl} alt={event.title} className="detail-hero-img" />
+          <figcaption>{event.category}</figcaption>
+        </figure>
         <div className="detail-meta">
+          <div className="detail-topline">
+            <span>{eventDate}</span>
+            <span>{event.venue}</span>
+          </div>
           <h2>{event.title}</h2>
           <p className="organizer">Oleh {event.organizerName}</p>
           <p className="desc">{event.description}</p>
+          <div className="event-stats">
+            <span><strong>{remaining}</strong> slot tersisa</span>
+            <span><strong>{event.soldCount}</strong> terjual</span>
+            <span><strong>{event.capacity}</strong> kapasitas</span>
+          </div>
         </div>
       </div>
       
       <div className="panel-right">
         <div className="booking-workbench">
-          <h3>Beli Tiket</h3>
+          <div className="booking-header">
+            <p>Checkout board</p>
+            <h3>Beli Tiket</h3>
+          </div>
           
           <div className="seat-selector">
             {['General', 'VIP'].map(type => (
@@ -91,6 +119,7 @@ export const EventDetail = ({ user }: { user: any }) => {
                 key={type}
                 className={`ticket-type-card ${ticketType === type ? 'selected' : ''}`}
                 onClick={() => setTicketType(type)}
+                aria-pressed={ticketType === type}
               >
                 {type}
               </button>
@@ -99,25 +128,32 @@ export const EventDetail = ({ user }: { user: any }) => {
 
           <div className="quantity-control">
             <label>Jumlah Tiket</label>
-            <input type="number" min="1" max="5" value={qty} onChange={e => setQty(Number(e.target.value))} />
+            <input
+              className="field-control"
+              type="number"
+              min="1"
+              max="5"
+              value={qty}
+              onChange={e => setQty(Math.max(1, Number(e.target.value)))}
+            />
           </div>
 
-          <div className="summary" style={{ borderBottom: '1px solid var(--color-rule)', marginBottom: 'var(--space-4)', paddingBottom: 'var(--space-4)' }}>
+          <div className="summary">
             <span>Total Bayar</span>
             <span className="price">
-              {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(event.price * qty)}
+              {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(total)}
             </span>
           </div>
 
-          {/* Area Pembayaran Manual */}
-          <div className="manual-payment" style={{ textAlign: 'center', marginBottom: 'var(--space-6)' }}>
-            <p style={{ fontSize: '0.9rem', marginBottom: 'var(--space-2)' }}>Scan QRIS / GoPay di bawah ini:</p>
-            {/* GANTI URL DI BAWAH INI DENGAN GAMBAR QRIS ASLI ANDA */}
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=GOPAY-NOMOR-ANDA" alt="QRIS" style={{ width: '150px', borderRadius: '8px', marginBottom: 'var(--space-4)' }} />
+          <div className="manual-payment">
+            <div className="qris-panel">
+              <p>Scan QRIS / GoPay</p>
+              <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=GOPAY-NOMOR-ANDA" alt="QRIS" />
+            </div>
             
-            <div style={{ textAlign: 'left' }}>
-              <label style={{ display: 'block', fontSize: '0.9rem', fontWeight: 700, marginBottom: 'var(--space-2)' }}>Unggah Bukti Transfer</label>
-              <input type="file" accept="image/*" onChange={(e) => setProofFile(e.target.files?.[0] || null)} style={{ width: '100%' }} />
+            <div className="upload-section">
+              <label>Unggah Bukti Transfer (PNG/JPG)</label>
+              <input type="file" accept="image/*" onChange={(e) => setProofFile(e.target.files?.[0] || null)} />
             </div>
           </div>
 

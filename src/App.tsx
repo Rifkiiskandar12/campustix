@@ -13,7 +13,6 @@ import { AdminAddEvent } from './pages/AdminAddEvent';
 import { Support } from './pages/Support';
 import { AdminDashboard } from './pages/AdminDashboard';
 import { AdminEditEvent } from './pages/AdminEditEvent';
-import { AdminVerifications } from './pages/AdminVerifications';
 
 export default function App() {
   const [user, setUser] = useState<User | null>(null);
@@ -66,10 +65,6 @@ export default function App() {
           <Route 
             path="/admin/edit-event/:id" 
             element={isAdmin ? <AdminEditEvent /> : <Navigate to="/" replace />} 
-          />
-          <Route 
-            path="/admin/verifications" 
-            element={isAdmin ? <AdminVerifications /> : <Navigate to="/" replace />} 
           />
           <Route path="/support" element={<Support />} />
         </Routes>

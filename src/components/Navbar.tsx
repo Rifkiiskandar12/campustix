@@ -23,9 +23,6 @@ export const Navbar = ({ user }: { user: User | null }) => {
             <Link to="/admin" style={{ color: 'var(--color-accent)', fontWeight: 700 }}>
               Admin Panel
             </Link>
-            <Link to="/admin/verifications" style={{ color: 'oklch(65% 0.2 120)', fontWeight: 700 }}>
-              ✓ Verifikasi Pembayaran
-            </Link>
           </>
         )}
       </div>

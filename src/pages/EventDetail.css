@@ -136,12 +136,80 @@
 }
 
 /* Upload & QR Area */
-.manual-payment p,
-.manual-payment label {
-  color: var(--color-ink-2); /* Fix untuk teks "Scan QRIS" dan "Unggah Bukti" yang sebelumnya hilang */
+/* ================= Upload & QR Area (Diperbarui) ================= */
+.manual-payment {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-paper-3); /* Kotak sedikit lebih terang dari background utama */
+  padding: var(--space-5);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-rule);
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-6);
 }
 
-.manual-payment input[type="file"] {
+.qr-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: var(--space-5);
+}
+
+.qr-section p {
+  color: var(--color-ink-2);
+  font-size: 0.9rem;
+  margin: 0 0 var(--space-3) 0;
+}
+
+.qr-image {
+  width: 160px; /* Ukuran QR Code dikunci agar tidak terlalu besar */
+  height: 160px;
+  object-fit: contain;
+  background-color: #ffffff; /* Memastikan QR selalu berlatar putih agar mudah di-scan */
+  padding: var(--space-2);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.upload-section {
+  border-top: 1px dashed var(--color-rule);
+  padding-top: var(--space-4);
+}
+
+.upload-section label {
+  display: block;
+  font-weight: 700;
   color: var(--color-ink);
+  font-size: 0.9rem;
+  margin-bottom: var(--space-2);
+}
+
+.upload-section input[type="file"] {
+  width: 100%;
+  padding: var(--space-2);
+  background-color: var(--color-paper);
+  border: 1px solid var(--color-rule);
+  border-radius: 6px;
+  color: var(--color-ink-2);
   font-family: var(--font-sans);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+/* Modifikasi tombol "Choose File" bawaan browser agar estetik */
+.upload-section input[type="file"]::file-selector-button {
+  background-color: var(--color-paper-2);
+  color: var(--color-ink);
+  border: 1px solid var(--color-rule);
+  padding: var(--space-2) var(--space-4);
+  border-radius: 4px;
+  margin-right: var(--space-3);
+  cursor: pointer;
+  font-weight: 700;
+  transition: background-color var(--transition-fast);
+}
+
+.upload-section input[type="file"]::file-selector-button:hover {
+  background-color: var(--color-paper-3);
 }
