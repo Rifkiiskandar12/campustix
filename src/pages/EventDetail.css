@@ -1,156 +1,147 @@
 .split-studio {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-8);
+  gap: var(--space-6);
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 @media (min-width: 768px) {
   .split-studio {
-    grid-template-columns: minmax(0, 1.45fr) minmax(320px, 0.75fr);
+    grid-template-columns: 1fr 1fr;
     align-items: start;
   }
 }
 
+/* ================= LEFT PANEL (Detail & Deskripsi) ================= */
+.panel-left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
 .detail-hero-img {
   width: 100%;
+  height: auto;
   aspect-ratio: 16/9;
   object-fit: cover;
   border-radius: var(--radius-card);
-  border: var(--rule-thin);
-  background-color: var(--color-paper-3);
-  box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-rule);
 }
 
 .detail-meta {
-  margin-top: var(--space-6);
+  background-color: var(--color-paper-2); /* Diubah ke warna gelap */
   padding: var(--space-6);
-  border: var(--rule-thin);
   border-radius: var(--radius-card);
-  background-color: var(--color-surface);
+  border: 1px solid var(--color-rule);
+  color: var(--color-ink); /* Memastikan teks berwarna terang */
 }
 
 .detail-meta h2 {
-  color: var(--color-muted);
-  font-size: clamp(2rem, 5vw, 4rem);
-  margin: 0 0 var(--space-3) 0;
-  line-height: 0.98;
-  overflow-wrap: anywhere;
-}
-
-.detail-date {
-  width: fit-content;
-  margin: 0 0 var(--space-4);
-  padding: var(--space-1) var(--space-3);
-  border: var(--rule-thin);
-  border-radius: var(--radius-pill);
-  color: var(--color-muted);
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  font-weight: 700;
+  margin: 0 0 var(--space-2) 0;
+  font-size: 2rem;
+  color: var(--color-ink);
 }
 
 .organizer {
-  color: var(--color-accent);
+  color: var(--color-accent); /* Aksen hijau neon */
   font-weight: 700;
   margin: 0 0 var(--space-4) 0;
 }
 
 .desc {
-  color: var(--color-muted);
   line-height: 1.6;
+  color: var(--color-ink-2); /* Warna teks sekunder agar nyaman dibaca */
 }
 
+
+/* ================= RIGHT PANEL (Booking Workbench) ================= */
 .booking-workbench {
-  background-color: var(--color-surface);
+  background-color: var(--color-paper-2); /* Diubah ke warna gelap */
   padding: var(--space-6);
   border-radius: var(--radius-card);
-  border: var(--rule-thin);
-  position: sticky;
-  top: 100px;
-  box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-rule);
+  color: var(--color-ink); /* Memaksa semua teks di dalamnya menjadi terang */
 }
 
 .booking-workbench h3 {
-  color: var(--color-muted);
-  margin: 0 0 var(--space-2) 0;
-  font-size: var(--text-2xl);
+  margin: 0 0 var(--space-5) 0;
+  font-size: 1.5rem;
+  border-bottom: 1px solid var(--color-rule);
+  padding-bottom: var(--space-3);
+  color: var(--color-ink);
 }
 
-.booking-copy {
-  margin: 0 0 var(--space-6);
-  color: var(--color-muted);
-}
-
+/* Tipe Tiket (General / VIP) */
 .seat-selector {
   display: flex;
   gap: var(--space-3);
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-5);
 }
 
 .ticket-type-card {
   flex: 1;
-  min-height: 48px;
   padding: var(--space-3);
-  border: var(--rule-thin);
-  border-radius: var(--radius-card);
-  background: var(--color-paper);
-  cursor: pointer;
-  font-family: var(--font-sans);
+  background-color: var(--color-paper-3);
+  border: 1px solid var(--color-rule);
+  border-radius: 6px;
+  color: var(--color-ink-2);
   font-weight: 700;
-  transition: transform var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast);
-  color: var(--color-muted);
-}
-
-.ticket-type-card:hover {
-  transform: translateY(-1px);
-  border-color: var(--color-accent);
+  cursor: pointer;
+  transition: all var(--transition-fast);
 }
 
 .ticket-type-card.selected {
+  background-color: var(--color-focus); /* Hijau neon */
+  color: var(--color-paper); /* Teks gelap di atas tombol neon */
   border-color: var(--color-focus);
-  background-color: var(--color-accent-soft);
-  color: var(--color-ink);
 }
 
+/* Input Jumlah Tiket */
 .quantity-control {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-5);
+}
+
+.quantity-control label {
+  font-weight: 700;
+  color: var(--color-ink-2); /* Memastikan label "Jumlah Tiket" terlihat */
 }
 
 .quantity-control input {
-  width: 84px;
+  width: 80px;
+  padding: var(--space-2);
+  border: 1px solid var(--color-rule);
+  border-radius: 6px;
+  background-color: var(--color-paper); /* Background gelap untuk input */
+  color: var(--color-ink); /* Teks putih saat mengetik angka */
   text-align: center;
+  font-weight: 700;
 }
 
+/* Total Harga */
 .summary {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: var(--space-6);
-  font-weight: 700;
-  font-size: 1.25rem;
-  border-top: var(--rule-thin);
-  padding-top: var(--space-4);
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: var(--color-ink);
 }
 
-@media (max-width: 767px) {
-  .booking-workbench {
-    position: static;
-  }
+.summary .price {
+  color: var(--color-accent); /* Total harga pakai warna neon */
 }
 
-@media (max-width: 420px) {
-  .seat-selector,
-  .quantity-control,
-  .summary {
-    align-items: stretch;
-    flex-direction: column;
-  }
+/* Upload & QR Area */
+.manual-payment p,
+.manual-payment label {
+  color: var(--color-ink-2); /* Fix untuk teks "Scan QRIS" dan "Unggah Bukti" yang sebelumnya hilang */
+}
 
-  .quantity-control input {
-    width: 100%;
-  }
+.manual-payment input[type="file"] {
+  color: var(--color-ink);
+  font-family: var(--font-sans);
 }

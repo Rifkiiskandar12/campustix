@@ -97,7 +97,17 @@
 .event-grid {
   display: grid;
   gap: var(--space-6);
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  grid-template-columns: 1fr;
+  align-items: stretch;
+}
+
+/* Responsiveness */
+@media (min-width: 768px) {
+  .event-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .event-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 .empty-state {

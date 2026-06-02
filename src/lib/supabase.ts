@@ -30,4 +30,6 @@ export type Booking = {
   totalPrice: number;
   ticketCode: string;
   createdAt: string;
+  status: 'pending' | 'approved' | 'rejected';
+  paymentProofUrl: string;
 };

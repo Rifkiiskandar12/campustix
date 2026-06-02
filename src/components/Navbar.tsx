@@ -15,14 +15,18 @@ export const Navbar = ({ user }: { user: User | null }) => {
       </div>
       <div className="nav-center">
         <Link to="/">Home</Link>
-        {user && <Link to="/tickets">Tickets</Link>}
+        {user && <Link to="/tickets">My Tickets</Link>}
         
-        {/* Tombol ini sekarang HANYA muncul jika isAdmin bernilai true */}
+        {/* Panel Menu Khusus Admin */}
         {isAdmin && (
-          <Link to="/admin" className="nav-action-link">
-            <ShieldCheck size={16} aria-hidden="true" />
-            Admin Panel
-          </Link>
+          <>
+            <Link to="/admin" style={{ color: 'var(--color-accent)', fontWeight: 700 }}>
+              Admin Panel
+            </Link>
+            <Link to="/admin/verifications" style={{ color: 'oklch(65% 0.2 120)', fontWeight: 700 }}>
+              ✓ Verifikasi Pembayaran
+            </Link>
+          </>
         )}
       </div>
       <div className="nav-right">
