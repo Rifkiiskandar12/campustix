@@ -1,0 +1,10 @@
+[
+  {
+    "date": "2026-06-02",
+    "macrostructure": "Workbench",
+    "theme": "custom",
+    "theme_axes": "warm paper / utility display / teal accent",
+    "enrichment": "none",
+    "brief": "Improve UI across pages, navbar, and login for CampusTix"
+  }
+]

@@ -1,0 +1,77 @@
+.admin-layout {
+  max-width: 700px;
+  margin: 0 auto;
+  background-color: var(--color-surface);
+  padding: var(--space-8);
+  border-radius: var(--radius-card);
+  border: var(--rule-thin);
+  box-shadow: var(--shadow-card);
+}
+
+.admin-layout h2 {
+  margin: 0 0 var(--space-2) 0;
+  font-size: 2rem;
+}
+
+.admin-subtitle {
+  color: var(--color-muted);
+  margin: 0 0 var(--space-8) 0;
+}
+
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+.form-group label {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--color-ink-2);
+}
+
+.form-row {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.file-control {
+  width: 100%;
+  padding: var(--space-3);
+  border: 1px dashed var(--color-rule);
+  border-radius: var(--radius-control);
+  background: var(--color-paper);
+  color: var(--color-ink-2);
+}
+
+.file-control::file-selector-button {
+  margin-right: var(--space-3);
+  border: var(--rule-thin);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-surface);
+  color: var(--color-ink);
+  padding: var(--space-2) var(--space-4);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.admin-submit {
+  margin-top: var(--space-4);
+}
+
+@media (max-width: 600px) {
+  .admin-layout {
+    padding: var(--space-5);
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+}

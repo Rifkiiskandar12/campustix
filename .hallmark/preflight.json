@@ -1,0 +1,8 @@
+{
+  "date": "2026-06-02",
+  "font_stack": "Geist + JetBrains Mono via src/styles/tokens.css",
+  "palette": "OKLCH CSS custom properties in src/styles/tokens.css",
+  "motion": "motion-cut; no motion library detected in package.json",
+  "spacing": "4-point CSS variable scale in src/styles/tokens.css",
+  "framework": "Vite + React"
+}

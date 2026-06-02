@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import type { User } from '@supabase/supabase-js';
 import { supabase, type Event } from '../lib/supabase';
 import './EventDetail.css';
 
-export const EventDetail = ({ user }: { user: any }) => {
+export const EventDetail = ({ user }: { user: User | null }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [event, setEvent] = useState<Event | null>(null);
@@ -45,6 +46,7 @@ export const EventDetail = ({ user }: { user: any }) => {
       <div className="panel-left">
         <img src={event.imageUrl} alt={event.title} className="detail-hero-img" />
         <div className="detail-meta">
+          <p className="detail-date">{new Date(event.date).toLocaleString()}</p>
           <h2>{event.title}</h2>
           <p className="organizer">By {event.organizerName}</p>
           <p className="desc">{event.description}</p>
@@ -54,6 +56,7 @@ export const EventDetail = ({ user }: { user: any }) => {
       <div className="panel-right">
         <div className="booking-workbench">
           <h3>Booking</h3>
+          <p className="booking-copy">{event.venue}</p>
           
           <div className="seat-selector">
             {['General', 'VIP'].map(type => (
@@ -61,6 +64,7 @@ export const EventDetail = ({ user }: { user: any }) => {
                 key={type}
                 className={`ticket-type-card ${ticketType === type ? 'selected' : ''}`}
                 onClick={() => setTicketType(type)}
+                aria-pressed={ticketType === type}
               >
                 {type}
               </button>
@@ -75,6 +79,7 @@ export const EventDetail = ({ user }: { user: any }) => {
               max="10" 
               value={qty} 
               onChange={e => setQty(Number(e.target.value))} 
+              className="field-control"
             />
           </div>
 

@@ -1,8 +1,9 @@
 import { useNavigate } from 'react-router-dom';
+import type { User } from '@supabase/supabase-js';
 import { supabase } from '../lib/supabase';
 import './Profile.css';
 
-export const Profile = ({ user }: { user: any }) => {
+export const Profile = ({ user }: { user: User | null }) => {
   const navigate = useNavigate();
 
   const handleSignOut = async () => {
@@ -26,7 +27,7 @@ export const Profile = ({ user }: { user: any }) => {
         </div>
       </div>
       
-      <div style={{ marginTop: 'var(--space-8)' }}>
+      <div className="profile-actions">
         <button className="pill-btn pill-secondary" onClick={handleSignOut}>
           Sign Out
         </button>

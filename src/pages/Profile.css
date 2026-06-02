@@ -1,5 +1,11 @@
 .profile-layout {
   max-width: 600px;
+  margin: 0 auto;
+}
+
+.profile-layout h2 {
+  margin: 0;
+  font-size: var(--text-2xl);
 }
 
 .profile-card {
@@ -7,16 +13,19 @@
   align-items: center;
   gap: var(--space-6);
   padding: var(--space-6);
-  background-color: var(--color-paper-2);
+  background-color: var(--color-surface);
+  border: var(--rule-thin);
   border-radius: var(--radius-card);
   margin-top: var(--space-6);
+  box-shadow: var(--shadow-card);
 }
 
 .profile-avatar {
-  width: 64px;
-  height: 64px;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
   object-fit: cover;
+  border: 3px solid var(--color-accent-soft);
 }
 
 .profile-name {
@@ -28,4 +37,16 @@
 .profile-email {
   color: var(--color-muted);
   margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.profile-actions {
+  margin-top: var(--space-8);
+}
+
+@media (max-width: 520px) {
+  .profile-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 }

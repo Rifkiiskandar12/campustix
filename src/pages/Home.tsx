@@ -25,7 +25,11 @@ export const Home = () => {
   return (
     <div className="page-enter-active home-layout">
       <header className="hero">
-        <h1 style={{ fontSize: 'var(--text-display)', fontWeight: 800 }}>Campus Beat</h1>
+        <div className="hero-copy">
+          <p className="hero-kicker">CampusTix live board</p>
+          <h1>Campus Beat</h1>
+          <p className="page-subtitle">Temukan konser, seminar, pertandingan, dan acara seni kampus dalam satu katalog yang mudah dipindai.</p>
+        </div>
         <div className="filters">
           <input 
             type="text" 
@@ -49,9 +53,16 @@ export const Home = () => {
       </header>
 
       <main className="event-grid">
-        {filteredEvents.map(event => (
-          <EventCard key={event.id} event={event} />
-        ))}
+        {filteredEvents.length > 0 ? (
+          filteredEvents.map(event => (
+            <EventCard key={event.id} event={event} />
+          ))
+        ) : (
+          <div className="empty-state">
+            <h2>Tidak ada event yang cocok</h2>
+            <p>Coba kata kunci lain atau pilih kategori All.</p>
+          </div>
+        )}
       </main>
     </div>
   );

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import type { User } from '@supabase/supabase-js';
 import { supabase } from './lib/supabase';
 import { Navbar } from './components/Navbar';
 import { Home } from './pages/Home';
@@ -7,10 +8,11 @@ import { EventDetail } from './pages/EventDetail';
 import { MyTickets } from './pages/MyTickets';
 import { Profile } from './pages/Profile';
 import { Toast } from './components/Toast';
-import { Login } from './pages/Login';
+import { Login } from './pages/login';
+import { AdminAddEvent } from './pages/AdminAddEvent';
 
 export default function App() {
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -31,10 +33,8 @@ export default function App() {
     <>
       <Navbar user={user} />
       
-      <main style={{ padding: 'var(--space-8) var(--space-4)', maxWidth: '1200px', margin: '0 auto' }}>
+      <main className="app-shell">
         <Routes>
-          <Route path="/" element={<Home />} />
-          {/* Taruh di bawah Route Home */}
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login user={user} />} />
           <Route path="/event/:id" element={<EventDetail user={user} />} />
@@ -47,6 +47,10 @@ export default function App() {
           <Route 
             path="/profile" 
             element={user ? <Profile user={user} /> : <Navigate to="/" replace />} 
+          />
+          <Route 
+            path="/admin/add-event" 
+            element={user ? <AdminAddEvent user={user} /> : <Navigate to="/login" replace />} 
           />
         </Routes>
       </main>

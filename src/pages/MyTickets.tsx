@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
+import type { User } from '@supabase/supabase-js';
 import { supabase, type Booking } from '../lib/supabase';
 import './MyTickets.css';
 
-export const MyTickets = ({ user }: { user: any }) => {
+export const MyTickets = ({ user }: { user: User | null }) => {
   const [tickets, setTickets] = useState<Booking[]>([]);
 
   useEffect(() => {

@@ -12,12 +12,11 @@
   padding: var(--space-3) var(--space-5);
   border-radius: var(--radius-card);
   font-weight: 500;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-card);
 }
 
 .toast-content.error {
-  /* Using a dark slightly red-tinted ink for errors to keep it minimal */
-  background-color: oklch(30% 0.05 20); 
+  background-color: var(--color-danger);
 }
 
 @keyframes slideUp {
@@ -33,7 +32,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .toast-container {
-    animation: fadeIn 150ms ease-in-out;
+    animation: fadeIn 150ms var(--ease-out);
   }
   
   @keyframes fadeIn {
