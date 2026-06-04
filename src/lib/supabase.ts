@@ -32,4 +32,14 @@ export type Booking = {
   createdAt: string;
   status: 'pending' | 'approved' | 'rejected';
   paymentProofUrl: string;
+  isUsed: boolean;
+};
+
+export type Profile = {
+  id: string;
+  email: string;
+  full_name: string;
+  avatar_url: string;
+  created_at: string;
+  role: 'admin' | 'checker' | 'user';
 };

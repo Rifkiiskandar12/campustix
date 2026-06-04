@@ -25,14 +25,6 @@
   text-transform: uppercase;
 }
 
-.wordmark::before {
-  content: '';
-  width: 14px;
-  height: 14px;
-  border-radius: 0;
-  background-color: var(--color-accent);
-  box-shadow: 14px 0 0 var(--color-ink);
-}
 
 .nav-center {
   display: flex;

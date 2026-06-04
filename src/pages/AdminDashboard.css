@@ -95,3 +95,137 @@
   font-size: 0.75rem;
   font-weight: 800;
 }
+
+/* ================= CHECK-IN TAB STYLE ================= */
+.checkin-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: var(--space-4) 0;
+}
+
+.checkin-form {
+  display: flex;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.checkin-form input {
+  flex: 1;
+  padding: var(--space-3);
+  background-color: var(--color-paper-2);
+  border: 2px solid var(--color-rule);
+  color: var(--color-ink);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.checkin-form input:focus {
+  outline: none;
+  border-color: var(--color-focus);
+}
+
+.checkin-error {
+  text-align: center;
+  color: oklch(60% 0.2 25); /* Merah terang */
+  font-weight: 700;
+}
+
+.checkin-card {
+  background-color: var(--color-paper-2);
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-card);
+  padding: var(--space-6);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.checkin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--color-rule);
+  padding-bottom: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.checkin-header h3 {
+  margin: 0;
+  color: var(--color-ink);
+}
+
+.status-badge {
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+
+.status-badge.valid { background-color: oklch(35% 0.15 140); color: oklch(90% 0.15 140); }
+.status-badge.invalid { background-color: oklch(35% 0.15 25); color: oklch(90% 0.15 25); }
+
+.checkin-details p {
+  color: var(--color-ink-2);
+  margin: 0 0 var(--space-2) 0;
+  font-size: 1.1rem;
+}
+
+.mono-text {
+  font-family: var(--font-mono);
+  color: var(--color-accent);
+  font-weight: 800;
+}
+
+.alert-box {
+  padding: var(--space-4);
+  border-radius: 8px;
+  font-weight: 800;
+  text-align: center;
+  margin-top: var(--space-4);
+}
+
+.alert-box.error { background-color: oklch(30% 0.1 25); color: oklch(80% 0.1 25); border: 1px solid oklch(50% 0.2 25); }
+.alert-box.warning { background-color: oklch(40% 0.15 70); color: oklch(95% 0.15 70); border: 1px solid oklch(65% 0.2 70); }
+
+@media (max-width: 600px) {
+  .checkin-form { flex-direction: column; }
+}
+
+/* ================= OVERVIEW / STATS CARD STYLE ================= */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
+}
+
+.stat-card {
+  background-color: var(--color-paper-2);
+  border: 1px solid var(--color-rule);
+  padding: var(--space-5);
+  border-radius: var(--radius-card);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.stat-title {
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--color-ink);
+  line-height: 1;
+}
+
+.stat-value.highlight {
+  color: var(--color-accent); /* Menggunakan hijau neon untuk uang/pendapatan */
+}

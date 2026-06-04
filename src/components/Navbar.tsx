@@ -3,29 +3,32 @@ import type { User } from '@supabase/supabase-js';
 import { ShieldCheck, Ticket, UserCircle } from 'lucide-react';
 import './Navbar.css';
 
-export const Navbar = ({ user }: { user: User | null }) => {
-  // Ganti dengan email Anda, misal: rifki@kampus.edu atau email pribadi
-  const adminEmails = ['jaaaa7126@gmail.com'];
-  const isAdmin = Boolean(user?.email && adminEmails.includes(user.email));
+export const Navbar = ({ 
+  user, 
+  isAdmin = false, 
+  isChecker = false 
+}: { 
+  user: User | null, 
+  isAdmin?: boolean, 
+  isChecker?: boolean 
+}) => {
 
   return (
     <nav className="navbar">
       <div className="nav-left">
         <Link to="/" className="wordmark">CampusTix</Link>
       </div>
+      
       <div className="nav-center">
         <Link to="/">Home</Link>
         {user && <Link to="/tickets">My Tickets</Link>}
-        
-        {/* Panel Menu Khusus Admin */}
-        {isAdmin && (
-          <>
-            <Link to="/admin" style={{ color: 'var(--color-accent)', fontWeight: 700 }}>
-              Admin Panel
-            </Link>
-          </>
+        {(isAdmin || isChecker) && (
+          <Link to="/admin" style={{ color: 'var(--color-accent)', fontWeight: 700 }}>
+            {isAdmin ? 'Admin Panel' : 'Panel Petugas'}
+          </Link>
         )}
       </div>
+
       <div className="nav-right">
         {user ? (
           <Link to="/profile" className="avatar-link">
