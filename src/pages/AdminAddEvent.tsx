@@ -7,7 +7,7 @@ import './AdminAddEvent.css';
 export const AdminAddEvent = ({ user }: { user: User | null }) => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [imageFile, setImageFile] = useState<File | null>(null); // State khusus untuk file
+  const [imageFile, setImageFile] = useState<File | null>(null);
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -40,7 +40,6 @@ export const AdminAddEvent = ({ user }: { user: User | null }) => {
     setLoading(true);
 
     try {
-      // 1. Upload gambar ke Supabase Storage (Bucket: event-posters)
       const fileExt = imageFile.name.split('.').pop();
       const fileName = `${Math.random().toString(36).substring(2, 15)}.${fileExt}`;
       const filePath = `posters/${fileName}`;
@@ -51,21 +50,19 @@ export const AdminAddEvent = ({ user }: { user: User | null }) => {
 
       if (uploadError) throw uploadError;
 
-      // 2. Dapatkan URL publik dari gambar yang baru diupload
       const { data: publicUrlData } = supabase.storage
         .from('event-posters')
         .getPublicUrl(filePath);
 
       const finalImageUrl = publicUrlData.publicUrl;
 
-      // 3. Simpan data event ke database
       const formattedDate = new Date(formData.date).toISOString();
 
       const { error: dbError } = await supabase.from('events').insert({
         title: formData.title,
         description: formData.description,
         category: formData.category,
-        imageUrl: finalImageUrl, // Gunakan URL dari Supabase Storage
+        imageUrl: finalImageUrl,
         date: formattedDate,
         venue: formData.venue,
         price: Number(formData.price),
@@ -143,7 +140,6 @@ export const AdminAddEvent = ({ user }: { user: User | null }) => {
 
         <div className="form-group">
           <label>Upload Gambar Poster</label>
-          {/* Input file spesifik untuk gambar */}
           <input 
             type="file" 
             accept="image/*" 

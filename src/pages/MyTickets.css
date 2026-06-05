@@ -24,23 +24,23 @@
   background-color: var(--color-paper-2); /* KUNCI: Ubah ke warna latar gelap */
   border: 1px solid var(--color-rule);
   border-radius: var(--radius-card);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Bayangan disesuaikan untuk dark mode */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
 }
 
 .ticket-info h3 {
-  color: var(--color-ink); /* Judul event menjadi putih/terang */
+  color: var(--color-ink); 
   margin: 0 0 var(--space-2) 0;
   font-size: 1.25rem;
 }
 
 .ticket-meta {
-  color: var(--color-ink-2); /* Info tanggal & tipe tiket lebih kontras */
+  color: var(--color-ink-2); 
   margin: 0;
   font-size: 0.95rem;
 }
 
 .ticket-code {
-  background-color: var(--color-paper-3); /* Kotak kode sedikit lebih gelap dari kartu */
+  background-color: var(--color-paper-3); 
   padding: var(--space-3) var(--space-4);
   border-radius: var(--radius-card);
   border: 1px solid var(--color-rule);
@@ -51,7 +51,7 @@
   font-family: var(--font-mono);
   font-weight: 800;
   letter-spacing: 1.5px;
-  color: var(--color-accent); /* Kode tiket menggunakan warna hijau neon agar menonjol */
+  color: var(--color-accent); 
   white-space: nowrap;
   font-size: 1.1rem;
 }

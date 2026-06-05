@@ -69,12 +69,16 @@
   color: var(--color-ink-2);
 }
 
+.role-checker {
+  background-color: var(--color-accent);
+  color: var(--color-paper);
+}
+
 .role-admin {
   background-color: var(--color-focus);
   color: var(--color-paper);
 }
 
-/* Statistik Grid */
 .profile-stats {
   display: grid;
   grid-template-columns: 1fr 1fr;

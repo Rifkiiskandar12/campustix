@@ -20,7 +20,7 @@ export default function App() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Fungsi yang diperbarui dengan pendeteksi error
+    // Pendeteksi error
     const fetchUserRole = async (userId: string) => {
       console.log("🔍 Mengecek role ke Supabase untuk ID:", userId);
       
@@ -42,13 +42,13 @@ export default function App() {
       }
     };
 
-    // Cek sesi aktif saat pertama kali buka web
+    // Cek sesi aktif
     supabase.auth.getSession().then(({ data: { session } }) => {
       setUser(session?.user ?? null);
       if (session?.user) fetchUserRole(session.user.id);
     });
 
-    // Pantau jika ada yang login atau logout
+    // Pantau login atau logout
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
       if (session?.user) {
@@ -76,7 +76,7 @@ export default function App() {
           <Route path="/login" element={<Login user={user} />} />
           <Route path="/event/:id" element={<EventDetail user={user} />} />
           
-          {/* Auth-gated routes */}
+          {/* Auth-gated routes */} 
           <Route path="/tickets" element={user ? <MyTickets user={user} /> : <Navigate to="/" replace />} />
           <Route path="/profile" element={user ? <Profile user={user} /> : <Navigate to="/" replace />} />
           

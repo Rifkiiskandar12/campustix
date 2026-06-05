@@ -1,7 +1,7 @@
 .event-card {
   display: flex;
   flex-direction: column;
-  height: 100%; /* Memaksa kartu untuk mengisi penuh ruang grid secara vertikal */
+  height: 100%;
   background-color: var(--color-paper-2);
   border-radius: var(--radius-card);
   overflow: hidden;
@@ -13,20 +13,20 @@
 
 .event-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0,0,0,0.15); /* Sedikit ditebalkan bayangannya untuk dark mode */
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
 }
 
 .card-image-wrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 4/3; /* Mengunci rasio kotak gambar agar semua kartu sama rata */
+  aspect-ratio: 4/3;
   overflow: hidden;
 }
 
 .card-image-wrapper img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* KUNCI UTAMA: Memotong gambar secara proporsional tanpa membuatnya gepeng/melar */
+  object-fit: cover;
   display: block;
 }
 
@@ -47,7 +47,7 @@
   padding: var(--space-4);
   display: flex;
   flex-direction: column;
-  flex-grow: 1; /* Memaksa area teks ini untuk memanjang mengisi sisa ruang kosong di bawah gambar */
+  flex-grow: 1;
 }
 
 .card-content h3 {
@@ -66,7 +66,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: auto; /* KUNCI KEDUA: Mendorong footer (harga & tombol) ke bagian paling bawah kartu */
+  margin-top: auto; 
   padding-top: var(--space-4);
 }
 

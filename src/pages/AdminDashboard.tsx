@@ -12,7 +12,6 @@ export const AdminDashboard = ({ isAdmin }: { isAdmin?: boolean }) => {
   const [events, setEvents] = useState<Event[]>([]);
   const [allBookings, setAllBookings] = useState<Booking[]>([]); 
   
-  // State khusus Check-in
   const [checkInCode, setCheckInCode] = useState('');
   const [checkInResult, setCheckInResult] = useState<Booking | null>(null);
   const [checkInMessage, setCheckInMessage] = useState('');
@@ -92,7 +91,6 @@ export const AdminDashboard = ({ isAdmin }: { isAdmin?: boolean }) => {
       </div>
 
       <div className="admin-tabs">
-        {/* SEMBUNYIKAN 4 TAB INI DARI PETUGAS */}
         {isAdmin && (
           <>
             <button className={`tab-btn ${activeTab === 'overview' ? 'active' : ''}`} onClick={() => setActiveTab('overview')}>
@@ -280,7 +278,6 @@ export const AdminDashboard = ({ isAdmin }: { isAdmin?: boolean }) => {
                 <tr><td colSpan={4} style={{ textAlign: 'center' }}>Belum ada data pengguna.</td></tr>
               ) : (
                 profiles.map((profile) => (
-                  /* Gunakan math.random sbg fallback key jk ID kosong */
                   <tr key={profile.id || Math.random()}>
                     <td>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
@@ -293,9 +290,7 @@ export const AdminDashboard = ({ isAdmin }: { isAdmin?: boolean }) => {
                       </div>
                     </td>
                     <td>{profile.email || 'Tidak ada email'}</td>
-                    {/* Tambahkan ?. agar aman jika ID undefined/null */}
                     <td className="mono-text" style={{ fontSize: '0.85rem' }}>{profile.id?.substring(0, 12) || 'ID Invalid'}...</td>
-                    {/* Cek apakah created_at ada sblm di-parse */}
                     <td>{profile.created_at ? new Date(profile.created_at).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' }) : '-'}</td>
                   </tr>
                 ))

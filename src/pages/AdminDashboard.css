@@ -130,7 +130,7 @@
 
 .checkin-error {
   text-align: center;
-  color: oklch(60% 0.2 25); /* Merah terang */
+  color: oklch(60% 0.2 25);
   font-weight: 700;
 }
 
@@ -193,7 +193,7 @@
   .checkin-form { flex-direction: column; }
 }
 
-/* ================= OVERVIEW / STATS CARD STYLE ================= */
+
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -227,5 +227,5 @@
 }
 
 .stat-value.highlight {
-  color: var(--color-accent); /* Menggunakan hijau neon untuk uang/pendapatan */
+  color: var(--color-accent); 
 }

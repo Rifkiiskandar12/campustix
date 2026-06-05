@@ -18,7 +18,7 @@ export const MyTickets = ({ user }: { user: User | null }) => {
       if (data) setTickets(data as Booking[]);
     };
     fetchTickets();
-  }, [user]);
+  }, [user]); 
 
   return (
     <div className="page-enter-active workbench-layout">
@@ -28,7 +28,6 @@ export const MyTickets = ({ user }: { user: User | null }) => {
         {tickets.length === 0 ? (
           <p style={{ color: 'var(--color-muted)' }}>Belum ada riwayat pemesanan tiket.</p>
         ) : (
-          // KUNCI PERBAIKAN: Melakukan perulangan menggunakan .map()
           tickets.map((ticket) => (
             <div key={ticket.id} className="ticket-item">
               <div className="ticket-info">
@@ -37,7 +36,6 @@ export const MyTickets = ({ user }: { user: User | null }) => {
                   {new Date(ticket.eventDate).toLocaleDateString('id-ID')} &bull; {ticket.ticketType} x{ticket.quantity}
                 </p>
                 
-                {/* Badge Status */}
                 <span style={{
                   display: 'inline-block', marginTop: '8px', padding: '4px 8px', borderRadius: '4px', fontSize: '0.8rem', fontWeight: 700,
                   backgroundColor: ticket.status === 'approved' ? 'oklch(90% 0.1 150)' : ticket.status === 'rejected' ? 'oklch(90% 0.1 25)' : 'var(--color-paper-3)',

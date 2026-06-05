@@ -5,7 +5,7 @@ export const Toast = ({ message, onClose }: { message: string; onClose: () => vo
   useEffect(() => {
     const timer = setTimeout(() => {
       onClose();
-    }, 4000); // Auto-dismiss after 4 seconds
+    }, 4000);
 
     return () => clearTimeout(timer);
   }, [onClose]);

@@ -6,19 +6,29 @@ import './Profile.css';
 export const Profile = ({ user }: { user: any }) => {
   const navigate = useNavigate();
   const [ticketCount, setTicketCount] = useState(0);
+  const [userRole, setUserRole] = useState<'admin' | 'checker' | 'user'>('user'); 
 
-  // Ambil data total tiket yang pernah dibeli
   useEffect(() => {
-    const fetchStats = async () => {
+    const fetchData = async () => {
       if (!user) return;
+
       const { count } = await supabase
         .from('bookings')
         .select('*', { count: 'exact', head: true })
-        .eq('userId', user.id);
+        .eq('userId', user.id);   
       
       if (count) setTicketCount(count);
+
+      const { data: profileData } = await supabase
+        .from('profiles')
+        .select('role')
+        .eq('id', user.id)
+        .single();
+
+      if (profileData) setUserRole(profileData.role);
     };
-    fetchStats();
+    
+    fetchData();
   }, [user]);
 
   const handleSignOut = async () => {
@@ -26,10 +36,12 @@ export const Profile = ({ user }: { user: any }) => {
     navigate('/');
   };
 
-  // Identifikasi peran (Role)
-  const adminEmails = ['jaaaa7126@gmail.com']; 
-  const isAdmin = user && user.email && adminEmails.includes(user.email);
-  const roleLabel = isAdmin ? 'Admin / Panitia' : 'Mahasiswa';
+  const isAdmin = userRole === 'admin';
+  const isChecker = userRole === 'checker';
+  
+  let roleLabel = 'Mahasiswa';
+  if (isAdmin) roleLabel = 'Admin / Panitia';
+  else if (isChecker) roleLabel = 'Petugas Check-in';
 
   const { full_name, avatar_url, email } = user?.user_metadata || {};
 
@@ -54,35 +66,34 @@ export const Profile = ({ user }: { user: any }) => {
         <div className="profile-info">
           <p className="profile-name">{full_name || 'Campus Student'}</p>
           <p className="profile-email">{email || user?.email}</p>
-          <span className={`role-badge ${isAdmin ? 'role-admin' : 'role-user'}`}>
+          <span className={`role-badge ${isAdmin ? 'role-admin' : isChecker ? 'role-checker' : 'role-user'}`}>
             {roleLabel}
           </span>
         </div>
       </div>
       
-      {/* Bagian Statistik / Mini Dashboard */}
+      {/* Statistik / Dashboard */}
       <div className="profile-stats">
         <div className="stat-card">
           <span className="stat-value">{ticketCount}</span>
           <span className="stat-label">Total Tiket Dibeli</span>
         </div>
         <div className="stat-card">
-          <span className="stat-value">{isAdmin ? 'Tak Terbatas' : 'Basic'}</span>
+          {/* Tipe akun juga menyesuaikan */}
+          <span className="stat-value">{isAdmin ? 'Tak Terbatas' : isChecker ? 'Staff' : 'Basic'}</span>
           <span className="stat-label">Tipe Akun</span>
         </div>
       </div>
 
-      {/* Area Pengaturan (Pintasan Fungsional) */}
+      {/* Pengaturan Aplikasi */}
       <div className="profile-settings">
         <h3>Pengaturan Aplikasi</h3>
         <div className="settings-list">
-          {/* Arahkan ke halaman My Tickets */}
           <button className="setting-item" onClick={() => navigate('/tickets')}>
             <span>Riwayat Transaksi Lengkap</span>
             <span className="arrow">→</span>
           </button>
           
-          {/* Arahkan ke halaman Support baru */}
           <button className="setting-item" onClick={() => navigate('/support')}>
             <span>Bantuan & Dukungan</span>
             <span className="arrow">→</span>

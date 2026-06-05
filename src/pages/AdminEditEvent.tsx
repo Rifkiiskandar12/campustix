@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
-import './AdminAddEvent.css'; // Kita bisa memakai ulang CSS dari Add Event
+import './AdminAddEvent.css'; 
 
 export const AdminEditEvent = () => {
   const { id } = useParams();
@@ -44,7 +44,7 @@ export const AdminEditEvent = () => {
     setLoading(true);
 
     try {
-      let finalImageUrl = currentImageUrl; // Default pakai gambar lama
+      let finalImageUrl = currentImageUrl; 
 
       // Jika admin mengunggah gambar baru
       if (imageFile) {
@@ -68,7 +68,7 @@ export const AdminEditEvent = () => {
       }).eq('id', id);
 
       if (dbError) throw dbError;
-      navigate('/admin'); // Kembali ke dashboard
+      navigate('/admin'); 
     } catch (error: any) {
       alert('Terjadi kesalahan: ' + error.message);
     } finally {

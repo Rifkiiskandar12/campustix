@@ -163,10 +163,10 @@
 }
 
 .qr-image {
-  width: 160px; /* Ukuran QR Code dikunci agar tidak terlalu besar */
+  width: 160px;
   height: 160px;
   object-fit: contain;
-  background-color: #ffffff; /* Memastikan QR selalu berlatar putih agar mudah di-scan */
+  background-color: #ffffff;
   padding: var(--space-2);
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
@@ -197,7 +197,6 @@
   cursor: pointer;
 }
 
-/* Modifikasi tombol "Choose File" bawaan browser agar estetik */
 .upload-section input[type="file"]::file-selector-button {
   background-color: var(--color-paper-2);
   color: var(--color-ink);

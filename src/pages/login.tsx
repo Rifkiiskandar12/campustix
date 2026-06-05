@@ -5,7 +5,6 @@ import { supabase } from '../lib/supabase';
 import './login.css';
 
 export const Login = ({ user }: { user: User | null }) => {
-  // Jika user sudah login, langsung arahkan ke Home
   if (user) {
     return <Navigate to="/" replace />;
   }
@@ -14,7 +13,7 @@ export const Login = ({ user }: { user: User | null }) => {
     const { error } = await supabase.auth.signInWithOAuth({ 
       provider,
       options: {
-        redirectTo: window.location.origin // Akan kembali ke http://localhost:5173
+        redirectTo: window.location.origin 
       }
     });
     
